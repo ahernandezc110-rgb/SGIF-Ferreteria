@@ -1,0 +1,29 @@
+def buscar_productos():
+    print("\n--- BUSCAR PRODUCTO ---")
+    dato = input("Código o nombre del producto a buscar: ")
+    producto = buscar_producto(dato)
+    if producto:
+        print("\n--- Datos del Producto ---")
+        for clave, valor in producto.items():
+            print(f"{clave.capitalize()}: {valor}")
+    else:
+        print("[X] Producto no encontrado.")
+ 
+def consultar_existencias():
+    print("\n--- CONSULTAR EXISTENCIAS ---")
+    dato = input("Código o nombre del producto a buscar: ")
+    producto = buscar_producto(dato)
+    if producto:
+        print(f"Producto: {producto['nombre']}")
+        print(f"Existencia disponible: {producto['cantidad']}")
+    else:
+        print("[X] Producto no encontrado.")
+ 
+def mostrar_productos_agotados():
+    print("\n--- PRODUCTOS AGOTADOS ---")
+    agotados = [p for p in productos if p['cantidad'] == 0]
+    if agotados:
+        for p in agotados:
+            print(f"Código: {p['codigo']} | Nombre: {p['nombre']} | Categoría: {p['categoria']}")
+    else:
+        print("[OK] No hay productos agotados.")
