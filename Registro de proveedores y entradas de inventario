@@ -1,0 +1,26 @@
+def registrar_proveedor():
+    print("\n--- REGISTRAR PROVEEDOR ---")
+    nombre = input("Nombre del proveedor: ")
+    for prov in proveedores:
+        if prov['nombre'].lower() == nombre.lower():
+            print("Error: Proveedor ya registrado.")
+            return
+    contacto = input("Contacto del proveedor (Tel/Correo): ")
+    proveedores.append({'nombre': nombre, 'contacto': contacto})
+    print("[OK] Proveedor registrado correctamente.")
+ 
+def registrar_entrada():
+    print("\n--- REGISTRAR ENTRADA ---")
+    dato = input("Código o nombre del producto a buscar: ")
+    producto = buscar_producto(dato)
+    if producto:
+        cantidad_entrada = int(input("Cantidad de entrada: "))
+        producto['cantidad'] += cantidad_entrada
+        fecha = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        movimientos.append({
+            'fecha': fecha, 'codigo': producto['codigo'],
+            'tipo': 'ENTRADA', 'cantidad': cantidad_entrada
+        })
+        print(f"[OK] Entrada registrada. Nueva existencia: {producto['cantidad']}")
+    else:
+        print("[X] Producto no encontrado.")
