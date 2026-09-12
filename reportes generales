@@ -1,0 +1,31 @@
+def mostrar_inventario_general():
+    print("\n--- INVENTARIO GENERAL ---")
+    if not productos:
+        print("El inventario está vacío.")
+    else:
+        for p in productos:
+            print("-" * 30)
+            for clave, valor in p.items():
+                print(f"{clave.capitalize()}: {valor}")
+ 
+def generar_reporte_movimientos():
+    print("\n--- REPORTE DE MOVIMIENTOS ---")
+    if not movimientos:
+        print("No hay movimientos registrados.")
+    else:
+        for mov in movimientos:
+            print("-" * 30)
+            for clave, valor in mov.items():
+                print(f"{clave.capitalize()}: {valor}")
+ 
+def main():
+    while True:
+        print("Menú con 10 opciones + salir")
+        opcion = input("\nSeleccione una opción: ")
+        # ... llama a cada función según la opción elegida
+        if opcion == '0':
+            print("Programa finalizado. ¡Hasta luego!")
+            break
+ 
+if __name__ == "__main__":
+    main()
