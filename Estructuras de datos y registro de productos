@@ -1,0 +1,32 @@
+productos = []
+proveedores = []
+movimientos = []
+ 
+def buscar_producto(dato_busqueda):
+    """Busca un producto por código o nombre y retorna el diccionario si lo encuentra."""
+    for prod in productos:
+        if str(prod['codigo']) == str(dato_busqueda) or prod['nombre'].lower() == str(dato_busqueda).lower():
+            return prod
+    return None
+ 
+def registrar_producto():
+    codigo = input("ingrese el codigo del producto: ")
+    nombre = input("Ingrese el nombre del producto: ")
+    descripcion = input("Ingrese la descripción: ")
+    categoria = input("Ingrese la Categoría: ")
+    while True:
+        try:
+            precio = float(input("Precio (solo números): "))
+            break
+        except ValueError:
+            print("[Error] Ingresa un número válido (ej: 6.00 o 45.50).")
+    cantidad = int(input("Cantidad inicial: "))
+    unidad_medida = input("Unidad de medida (ej: libra, galón, unidad): ")
+    proveedor = input("Proveedor: ")
+nuevo_producto = {
+        'codigo': codigo, 'nombre': nombre, 'descripcion': descripcion,
+        'categoria': categoria, 'precio': precio, 'cantidad': cantidad,
+        'unidad_medida': unidad_medida, 'proveedor': proveedor
+    }
+    productos.append(nuevo_producto)
+    print("[OK] Producto registrado correctamente.")
